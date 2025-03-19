@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,6 +30,48 @@
     <p>Redirecting... If nothing happens, <a id="manual-link" href="#">click here</a>.</p>
     <script>
         document.getElementById("manual-link").href = `note://open/second?param=123`;
+    </script>
+</body>
+</html>
+ -->
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Redirecting... If nothing happens, <a id="manual-link" href="#">click here</a>.</p>
+
+    <script>
+        function redirect() {
+            // Extract query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const screen = urlParams.get("screen") || "home";
+            const param = urlParams.get("param") || "";
+
+            // Deep link for Flutter app
+            const deepLink = `note://open/${screen}?param=${param}`;
+
+            // Try to open deep link using an iframe (for Android browsers)
+            let iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = deepLink;
+            document.body.appendChild(iframe);
+
+            // Update manual link
+            document.getElementById("manual-link").href = deepLink;
+
+            // Fallback: Redirect to Play Store if app is not installed
+            setTimeout(() => {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.your.app"; 
+            }, 2000); // Wait 2 seconds
+        }
+
+        window.onload = redirect;
     </script>
 </body>
 </html>

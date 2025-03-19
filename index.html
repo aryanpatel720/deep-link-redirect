@@ -1,42 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        function redirect() {
-            // Extract query parameters from URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const screen = urlParams.get("screen") || "home";
-            const param = urlParams.get("param") || "";
-
-            // Generate the deep link for the Flutter app
-            const deepLink = `note://open/${screen}?param=${param}`;
-
-            // Try to open the deep link
-            window.location.href = deepLink;
-
-            // Fallback: Redirect to Play Store if app is not installed
-            setTimeout(() => {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.your.app"; 
-            }, 2000); // Wait 2 seconds
-        }
-        
-        redirect();
-    </script>
-</head>
-<body>
-    <p>Redirecting... If nothing happens, <a id="manual-link" href="#">click here</a>.</p>
-    <script>
-        document.getElementById("manual-link").href = `note://open/second?param=123`;
-    </script>
-</body>
-</html>
- -->
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
